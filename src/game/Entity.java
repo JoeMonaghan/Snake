@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 public class Entity {
 	private int x,y, size;
 	
+	
 	public Entity(int size) {
 		this.size = size;
 	}

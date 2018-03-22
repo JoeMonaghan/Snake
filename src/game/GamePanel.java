@@ -139,9 +139,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 
 		running = true;
 		setUpLevel();
-		gameover = false;
-		level = 1;
-		setFPS(level * 10);
+
 
 	}
 
@@ -159,6 +157,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		apple = new Entity(SIZE);
 		setApple();
 		score = 0;
+		gameover = false;
+		level = 1;
+		dx = dy = 0;
+		setFPS(level * 10);
 	}
 
 	public void setApple() {
@@ -201,7 +203,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			dy = 0;
 			dx = -SIZE;
 		}
-		if (right && dx == 0) {
+		if (right && dx == 0 && dy != 0) {
 			dy = 0;
 			dx = SIZE;
 		}
@@ -262,9 +264,18 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 
 		g2d.setColor(Color.RED);
 		apple.render(g2d);
+		
+		if(gameover) {
+			g2d.drawString("Gameover!", 150, 200);
+		}
 
 		g2d.setColor(Color.WHITE);
-		g2d.drawString("Score: " + score, 10, 10);
+		g2d.drawString("Score: " + score + " Level: " + level, 10, 10);
+		
+		if(dx == 0 && dy == 0) {
+			g2d.drawString("Ready!", 150, 200);
+		}
+	
 	}
 
 }
