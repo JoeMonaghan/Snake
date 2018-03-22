@@ -170,16 +170,30 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			dx = 0;
 		}
 		if(left && dx == 0) {
-			dy = -SIZE;
-			dx = 0;
+			dy = 0;
+			dx = -SIZE;
 		}
 		if(right && dx == 0) {
-			dy = -SIZE;
-			dx = 0;
+			dy = 0;
+			dx = -SIZE;
 		}
-		for(int i = snake.size() - 1; i>0; i--) {
-			//snake.get(i).setPosition(snake.get(index), y);
+		for(int i = snake.size() - 1; i>0 ; i--) {
+			snake.get(i).setPosition(
+					snake.get(i -1).getX(),
+					snake.get(i- 1).getY());
 		}
+		
+		head.move(dx, dy);
+		
+		if(head.getX() < 0)
+			head.setX(WIDTH);
+		if(head.getY() < 0)
+			head.setY(HEIGHT);
+		if(head.getX() >  WIDTH)
+			head.setX(0);
+		if(head.getY() > HEIGHT)
+			head.setY(0);
+		
 
 	}
 
