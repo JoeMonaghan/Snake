@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -12,13 +13,17 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class GamePanel extends JPanel implements Runnable, KeyListener {
+public class GamePanel extends Container implements Runnable, KeyListener {
 
+	// width of play area X
 	public static final int WIDTH = 400;
+	// height of play area
 	public static final int HEIGHT = 400;
 
 	// Render
 	private Graphics2D g2d;
+	
+	
 	private BufferedImage image;
 
 	// The game loop
@@ -30,6 +35,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	// Game stuff
 	private Entity head, apple;
 	private ArrayList<Entity> snake;
+	
+	
+	// is this 10 by 10 work it out
 	private final int SIZE = 10;
 	private int score;
 	private int level;
